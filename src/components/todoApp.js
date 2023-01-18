@@ -27,6 +27,22 @@ export default function TodoApp() {
         setTodos(temp);
     }
 
+    function handleUpdate(id, value) {
+        const temp = [...todos];
+        const item = temp.find(item => item.id === id);
+        item.title = value;
+        setTodos(temp);
+    }
+
+    function handleDelete(id) {
+        const temp = todos.filter(item => item.id != id);
+
+        setTodos(temp);
+
+        setTitle("");
+        // me quede en el min 46:34
+    }
+
     return <div className="todoContainer">
         <form className="todoCreateForm" onSubmit={handleSubmit}> 
             <input onChange={handleChange} className="todoInput" value={title}></input>
@@ -41,7 +57,7 @@ export default function TodoApp() {
         <div className="todosContainer">
             {
                 todos.map(item => (
-                    <Todo key={item.id} item={item}></Todo>
+                    <Todo key={item.id} item={item} onUpdate={handleUpdate} onDelete={handleDelete}></Todo>
                 ))
             }
         </div>
