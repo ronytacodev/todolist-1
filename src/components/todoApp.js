@@ -1,9 +1,11 @@
 import { useState } from "react";
 import Todo from "./todo";
 
+import "./todoApp.css";
+
 export default function TodoApp() {
 
-    const [title, setTitle] = useState("Hola");
+    const [title, setTitle] = useState("Agrega tu lista de tareas");
     const [todos, setTodos] = useState([]);
 
     function handleChange(event) {
@@ -29,7 +31,7 @@ export default function TodoApp() {
 
     function handleUpdate(id, value) {
         const temp = [...todos];
-        const item = temp.find(item => item.id === id);
+        const item = temp.find(item => item.id = id);
         item.title = value;
         setTodos(temp);
     }
@@ -40,7 +42,7 @@ export default function TodoApp() {
         setTodos(temp);
 
         setTitle("");
-        // me quede en el min 46:34
+
     }
 
     return <div className="todoContainer">
@@ -49,7 +51,7 @@ export default function TodoApp() {
             <input 
                 onClick={handleSubmit}
                 type="submit"
-                value="Create todo"
+                value="Create to-do list"
                 className="buttonCreate">
             </input>
         </form>
